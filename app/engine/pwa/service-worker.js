@@ -1,12 +1,13 @@
-const CACHE_NAME = "ncns-shell-v1";
+const CACHE_NAME = "museum-hunt-shell-v2";
+const ROOT = new URL("../../../", self.location.href);
 
 const APP_SHELL_FILES = [
-  "/index.html",
-  "/main.js",
-  "/app/engine/styles/archive-shell.css",
-  "/app/engine/pwa/manifest.webmanifest",
-  "/app/games/nc-natural-sciences/skins/default/assets/icons/icon-192.png",
-  "/app/games/nc-natural-sciences/skins/default/assets/icons/icon-512.png"
+  new URL("index.html", ROOT).href,
+  new URL("main.js", ROOT).href,
+  new URL("app/engine/styles/archive-shell.css", ROOT).href,
+  new URL("app/engine/pwa/manifest.webmanifest", ROOT).href,
+  new URL("app/games/nc-natural-sciences/skins/default/assets/icons/icon-192.png", ROOT).href,
+  new URL("app/games/nc-natural-sciences/skins/default/assets/icons/icon-512.png", ROOT).href
 ];
 
 self.addEventListener("install", (event) => {
