@@ -1,3 +1,4 @@
+import { currentExpedition, renderDevActivation, markTutorialComplete } from "./app/engine/core/dev-activation.js";
 import { loadCharacterArchive } from "./app/engine/archive/archive-data-loader.js";
 import { initializeGlobalAudioController } from "./app/engine/core/global-audio-controller.js";
 import { mountGlobalMuteButton } from "./app/engine/ui/global-mute-button.js";
@@ -736,6 +737,7 @@ function goToTutorial() {
   const tutorialScreen = createOpeningTutorialScreen({
     onComplete: async () => {
       tutorialScreen.destroy();
+      markTutorialComplete();
 
       const openingFlowScreen = document.getElementById("opening-flow-screen");
       const archiveScreen = document.getElementById("archive-screen");
@@ -1048,15 +1050,34 @@ function goToStudio() {
 
   function goToStart() {
     renderOpeningStartScreen(() => {
-      if (typeof triggerOpeningCrtBurst === "function") {
-        triggerOpeningCrtBurst(goToTerminal);
-      } else {
-        goToTerminal();
-      }
+      renderDevActivation(document.getElementById("opening-flow-root"), () => {
+        if (typeof triggerOpeningCrtBurst === "function") {
+          triggerOpeningCrtBurst(goToTerminal);
+        } else {
+          goToTerminal();
+        }
+      });
     });
   }
 
-  goToStart();
+  const savedExpedition = currentExpedition();
+  if (savedExpedition?.tutorialComplete) {
+    if (openingFlowScreen) {
+      openingFlowScreen.hidden = true;
+      openingFlowScreen.classList.remove("active");
+    }
+    if (archiveScreen) {
+      archiveScreen.hidden = false;
+      archiveScreen.classList.add("active", "is-visible");
+      archiveScreen.classList.remove("archive-pre-reveal");
+    }
+    const mercer = characters.find((character) => character.id === "mercer");
+    if (mercer) mercer.locked = false;
+    renderCharacterStrip();
+    await renderActiveArchive();
+  } else {
+    goToStart();
+  }
 }
 
 /* ========================================
