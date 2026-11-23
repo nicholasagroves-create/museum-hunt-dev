@@ -1,3 +1,4 @@
+import { currentExpedition } from "./dev-activation.js";
 function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -282,7 +283,7 @@ export async function renderOpeningTerminalScreen(onComplete) {
       return;
     }
 
-    if (terminalState.stage === "create-pin" || terminalState.stage === "confirm-pin") {
+    if (terminalState.stage === "enter-pin") {
       const pin = hiddenInput.value.replace(/\D/g, "").slice(0, 4);
       hiddenInput.value = pin;
       inputDisplay.textContent = maskPin(pin);
@@ -300,34 +301,23 @@ export async function renderOpeningTerminalScreen(onComplete) {
 
       addStaticLine(`> ENTER RESEARCHER ID ${researcherId}`);
       terminalState.researcherId = researcherId;
-      terminalState.stage = "create-pin";
-      setPrompt("CREATE 4-DIGIT PIN", "numeric");
+      terminalState.stage = "enter-pin";
+      setPrompt("ENTER 4-DIGIT PIN", "numeric");
       return;
     }
 
-    if (terminalState.stage === "create-pin") {
+    if (terminalState.stage === "enter-pin") {
       const pin = hiddenInput.value.trim();
       if (pin.length !== 4) return;
-
-      addStaticLine(`> CREATE 4-DIGIT PIN ${maskPin(pin)}`);
-      terminalState.createdPin = pin;
-      terminalState.stage = "confirm-pin";
-      setPrompt("CONFIRM 4-DIGIT PIN", "numeric");
-      return;
-    }
-
-    if (terminalState.stage === "confirm-pin") {
-      const pin = hiddenInput.value.trim();
-      if (pin.length !== 4) return;
-
-      if (pin !== terminalState.createdPin) {
-        addStaticLine("PIN MISMATCH. RE-ENTER NEW PIN.");
-        terminalState.createdPin = "";
-        terminalState.stage = "create-pin";
-        setPrompt("CREATE 4-DIGIT PIN", "numeric");
+      const account = currentExpedition();
+      if (!account || account.id !== terminalState.researcherId || account.pin !== pin) {
+        addStaticLine("ACCESS DENIED. CHECK RESEARCHER ID AND PIN.");
+        terminalState.stage = "researcher-id";
+        setPrompt("ENTER RESEARCHER ID");
         return;
       }
-
+      terminalState.createdPin = pin;
+      addStaticLine(`> ENTER 4-DIGIT PIN ${maskPin(pin)}`);
       terminalState.stage = "verified";
       hiddenInput.blur();
       prompt.style.visibility = "hidden";
