@@ -1063,3 +1063,15 @@ body {
   }
 }
 
+
+/* PWA viewport: the shell stays fixed; content panes scroll internally. */
+html, body { width: 100%; height: 100%; overflow: hidden; overscroll-behavior: none; }
+body { padding: 0; }
+#app, .phone-shell { height: 100%; height: 100dvh; min-height: 0; overflow: hidden; }
+.phone-shell { display: flex; flex-direction: column; }
+.screen { height: 100%; height: 100dvh; min-height: 0; max-height: 100dvh; overflow: hidden; padding-bottom: calc(var(--nav-height) + env(safe-area-inset-bottom, 0px)); }
+.archive-grid-wrap { min-height: 0; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+#opening-flow-screen { height: 100dvh; min-height: 0; padding-bottom: 0; }
+#opening-flow-root { height: 100%; overflow: hidden; }
+.opening-start-screen, .opening-terminal-screen { height: 100dvh; min-height: 0; }
+@media (min-width: 431px) { body { padding: 0; } .phone-shell { height: 100dvh; min-height: 0; } }
