@@ -17,7 +17,7 @@
 .sponsor-background {
   position: absolute;
   inset: 0;
-  background: url("/app/games/nc-natural-sciences/media/opening/sponsor-room.jpg") center center / cover no-repeat;
+  background: url("../../games/nc-natural-sciences/media/opening/sponsor-room.jpg") center center / cover no-repeat;
   z-index: 0;
 }
 
