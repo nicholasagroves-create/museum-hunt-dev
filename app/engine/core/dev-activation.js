@@ -1,9 +1,9 @@
 // Development-only activation. No backend verification or cross-device recovery yet.
 const KEY = "museum-hunt-dev-expedition-v2";
-const CODE = "TEST-123";
+const CODE = "TEST-123"; // Temporary shared testing code; future codes are administrator-defined.
 const ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 export function formatGameId(value) { const raw = value.toUpperCase().replace(/[^A-Z0-9]/g,"").slice(0,7); return raw.length > 4 ? raw.slice(0,4)+"-"+raw.slice(4) : raw; }
-export function formatActivationCode(value) { const raw = value.toUpperCase().replace(/[^A-Z0-9]/g,"").slice(0,7); return raw.length > 4 ? raw.slice(0,4)+"-"+raw.slice(4) : raw; }
+export function formatActivationCode(value) { return value.trim().replace(/[^A-Za-z0-9-]/g,"").slice(0,40).toUpperCase(); }
 export function currentExpedition() {
   try { const x = JSON.parse(localStorage.getItem(KEY)); return x?.id && /^\\d{4}$/.test(x?.pin) ? x : null; }
   catch { return null; }
@@ -41,7 +41,7 @@ export function renderDevActivation(root, onActivated) {
   wrap.addEventListener("click", async e => {
     const action = e.target.closest("button")?.dataset.action;
     if (action === "new") {
-      show(`<label>ACTIVATION CODE<input id="activation-code" autocomplete="off" autocapitalize="characters" placeholder="ABCD-123" maxlength="8" inputmode="text"></label><p class="activation__error" role="alert"></p><button data-action="redeem">ACTIVATE EXPEDITION</button><button class="activation__secondary" data-action="back">BACK</button><p class="activation__note">Development access only. Use TEST-123.</p>`);
+      show(`<label>ACTIVATION CODE<input id="activation-code" autocomplete="off" autocapitalize="characters" placeholder="ABCD-123" maxlength="40" inputmode="text"></label><p class="activation__error" role="alert"></p><button data-action="redeem">ACTIVATE EXPEDITION</button><button class="activation__secondary" data-action="back">BACK</button><p class="activation__note">Development access only. Use TEST-123.</p>`);
     } else if (action === "resume") {
       show(`<p class="activation__note">For this development version, recovery is available only on the original device. Cross-device recovery requires the upcoming account server.</p><button data-action="local">OPEN SAVED EXPEDITION</button><button class="activation__secondary" data-action="back">BACK</button>`);
     } else if (action === "back") { form.hidden = true; choices.hidden = false; form.replaceChildren(); }
