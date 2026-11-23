@@ -23,7 +23,7 @@
 .studio-background {
   position: absolute;
   inset: 0;
-  background: url("/app/games/nc-natural-sciences/media/opening/studio-room-lit.jpg") center 75% / cover no-repeat;
+  background: url("../../games/nc-natural-sciences/media/opening/studio-room-lit.jpg") center 75% / cover no-repeat;
   opacity: 0;
   transition: opacity 1200ms ease;
   z-index: 0;
