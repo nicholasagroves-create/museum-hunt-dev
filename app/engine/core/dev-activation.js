@@ -5,7 +5,7 @@ const ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 export function formatGameId(value) { const raw = value.toUpperCase().replace(/[^A-Z0-9]/g,"").slice(0,7); return raw.length > 4 ? raw.slice(0,4)+"-"+raw.slice(4) : raw; }
 export function formatActivationCode(value) { return value.trim().replace(/[^A-Za-z0-9-]/g,"").slice(0,40).toUpperCase(); }
 export function currentExpedition() {
-  try { const x = JSON.parse(localStorage.getItem(KEY)); return x?.id && /^\\d{4}$/.test(x?.pin) ? x : null; }
+  try { const x = JSON.parse(localStorage.getItem(KEY)); return x?.id && /^\d{4}$/.test(x?.pin) ? x : null; }
   catch { return null; }
 }
 function randomInt(n) { const bytes = new Uint32Array(1); crypto.getRandomValues(bytes); return bytes[0] % n; }
@@ -53,7 +53,7 @@ export function renderDevActivation(root, onActivated) {
       const input = form.querySelector("#activation-code");
       if (formatActivationCode(input.value) !== CODE) { form.querySelector(".activation__error").textContent = "Code not recognized. Please try again."; return; }
       const x = createExpedition();
-      show(`<div class="activation__success">EXPEDITION AUTHORIZED</div><p>Take a screenshot of these credentials for account recovery.</p><div class="activation__credentials"><small>GAME ID</small><strong>${x.id}</strong><small>4-DIGIT PIN</small><strong>${x.pin}</strong></div><button data-action="save">SAVE CREDENTIAL IMAGE</button><button data-action="begin">I'VE SAVED MY CREDENTIALS — BEGIN</button><p class="activation__note">This prototype stores credentials only on this device. Cross-device recovery will be enabled when the backend is connected.</p>`);
+      show(`<div class="activation__success">EXPEDITION AUTHORIZED</div><p>Save these credentials to recover your expedition later.</p><div class="activation__credentials"><small>GAME ID</small><strong>${x.id}</strong><small>4-DIGIT PIN</small><strong>${x.pin}</strong></div><button data-action="save">SAVE CREDENTIAL CARD</button><button data-action="begin">I'VE SAVED MY CREDENTIALS — BEGIN</button><p class="activation__note">This prototype stores credentials only on this device. Cross-device recovery will be enabled when the backend is connected.</p>`);
       form.dataset.id = x.id;
     } else if (action === "save") {
       const x = currentExpedition();
@@ -72,14 +72,15 @@ export function renderDevActivation(root, onActivated) {
       ctx.fillStyle = "#fff1cc"; ctx.font = "bold 112px monospace"; ctx.fillText(x.pin,540,905);
       ctx.fillStyle = "#a8bca5"; ctx.font = "30px sans-serif"; ctx.fillText("Keep this image to recover your expedition.",540,1090);
       canvas.toBlob(async blob => {
-        if (!blob) return;
+        if (!blob) { e.target.textContent = "USE YOUR PHONE SCREENSHOT BUTTONS"; return; }
         const file = new File([blob], "mercer-expedition-credentials.png", {type:"image/png"});
         try {
-          if (navigator.canShare?.({files:[file]})) { await navigator.share({files:[file],title:"Expedition Credentials"}); return; }
+          if (navigator.canShare?.({files:[file]})) { await navigator.share({files:[file],title:"Expedition Credentials"}); e.target.textContent = "CARD SENT TO SHARE MENU"; return; }
         } catch (err) { if (err.name === "AbortError") return; }
         const url = URL.createObjectURL(blob);
-        const link = document.createElement("a"); link.href=url; link.download=file.name; link.click();
-        setTimeout(()=>URL.revokeObjectURL(url),10000);
+        const link = document.createElement("a"); link.href=url; link.download=file.name; document.body.appendChild(link); link.click(); link.remove();
+        e.target.textContent = "CARD DOWNLOAD REQUESTED — CHECK DOWNLOADS";
+        setTimeout(()=>URL.revokeObjectURL(url),60000);
       }, "image/png");
     } else if (action === "begin") onActivated(currentExpedition(), false);
   });
