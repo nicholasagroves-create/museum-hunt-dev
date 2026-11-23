@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+  <meta name="theme-color" content="#1b1611" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <title>NC Natural Sciences</title>
+  <link rel="manifest" href="./app/engine/pwa/manifest.webmanifest" />
+  <link rel="stylesheet" href="./app/engine/styles/archive-shell.css" />
+  <link rel="stylesheet" href="./app/engine/core/opening-studio-screen.css" />
+  <link rel="stylesheet" href="./app/engine/core/opening-sponsor-screen.css" />
+  <link rel="stylesheet" href="./app/engine/core/opening-title-screen.css" />
+</head>
+<body>
+  <div id="app">
+    <div class="phone-shell">
+
+      <!-- OPENING FLOW SCREEN -->
+      <section id="opening-flow-screen" class="screen active">
+        <div id="opening-flow-root"></div>
+      </section>
+
+      <!-- ARCHIVE SCREEN -->
+      <section id="archive-screen" class="screen" hidden>
+        <header class="archive-header">
+          <div class="archive-header-inner">
+            <div class="archive-kicker">THE</div>
+            <h1 class="archive-title">ARCHIVE</h1>
+            <div class="archive-lock">⌂</div>
+          </div>
+        </header>
+
+        <section class="character-strip-wrap">
+          <div id="character-strip" class="character-strip"></div>
+        </section>
+
+        <section class="path-header">
+          <div class="path-divider"></div>
+          <h2 id="active-path-label">MERCER'S PATH</h2>
+          <div class="path-divider"></div>
+        </section>
+
+        <main class="archive-grid-wrap">
+          <div id="archive-grid" class="archive-grid"></div>
+        </main>
+
+        <nav class="bottom-nav">
+          <button class="nav-btn active" data-tab="archive" type="button">
+            <span class="nav-icon">⌘</span>
+            <span class="nav-label">Archive</span>
+          </button>
+
+          <button class="nav-btn nav-btn-scan" data-tab="scan" type="button">
+            <span class="nav-icon">◎</span>
+            <span class="nav-label">SCAN</span>
+          </button>
+
+          <button class="nav-btn" data-tab="transmissions" type="button">
+            <span class="nav-icon transmissions-nav-icon">
+              ✉
+              <span class="nav-badge" id="transmissions-nav-badge-archive">0</span>
+            </span>
+            <span class="nav-label">Transmissions</span>
+          </button>
+
+          <button class="nav-btn" data-tab="final" type="button">
+            <span class="nav-icon">✦</span>
+            <span class="nav-label">Final Mechanism</span>
+          </button>
+        </nav>
+      </section>
+
+      <!-- TRANSMISSIONS SCREEN -->
+      <section id="transmissions-screen" class="screen" hidden>
+        <header class="archive-header">
+          <div class="archive-header-inner">
+            <div class="archive-kicker">ARCHIVE</div>
+            <h1 class="archive-title">TRANSMISSIONS</h1>
+            <div class="archive-lock">⌂</div>
+          </div>
+        </header>
+
+        <main class="archive-grid-wrap">
+          <div id="transmissions-feed"></div>
+        </main>
+
+        <nav class="bottom-nav">
+          <button class="nav-btn" data-tab="archive" type="button">
+            <span class="nav-icon">⌘</span>
+            <span class="nav-label">Archive</span>
+          </button>
+
+          <button class="nav-btn nav-btn-scan" data-tab="scan" type="button">
+            <span class="nav-icon">◎</span>
+            <span class="nav-label">SCAN</span>
+          </button>
+
+          <button class="nav-btn active" data-tab="transmissions" type="button">
+            <span class="nav-icon transmissions-nav-icon">
+              ✉
+              <span class="nav-badge" id="transmissions-nav-badge-transmissions">0</span>
+            </span>
+            <span class="nav-label">Transmissions</span>
+          </button>
+
+          <button class="nav-btn" data-tab="final" type="button">
+            <span class="nav-icon">✦</span>
+            <span class="nav-label">Final Mechanism</span>
+          </button>
+        </nav>
+      </section>
+
+      <!-- HINT SCREEN -->
+      <section id="hint-screen" class="screen" hidden>
+        <header class="archive-header">
+          <div class="archive-header-inner">
+            <div class="archive-kicker">ARCHIVE</div>
+            <h1 class="archive-title">HINT</h1>
+            <div class="archive-lock">⌂</div>
+          </div>
+        </header>
+
+        <main class="archive-grid-wrap">
+          <div id="hint-screen-content"></div>
+        </main>
+
+        <nav class="bottom-nav">
+          <button class="nav-btn" data-tab="archive" type="button">
+            <span class="nav-icon">⌘</span>
+            <span class="nav-label">Archive</span>
+          </button>
+
+          <button class="nav-btn nav-btn-scan" data-tab="scan" type="button">
+            <span class="nav-icon">◎</span>
+            <span class="nav-label">SCAN</span>
+          </button>
+
+          <button class="nav-btn" data-tab="transmissions" type="button">
+            <span class="nav-icon transmissions-nav-icon">
+              ✉
+              <span class="nav-badge" id="transmissions-nav-badge-hint">0</span>
+            </span>
+            <span class="nav-label">Transmissions</span>
+          </button>
+
+          <button class="nav-btn" data-tab="final" type="button">
+            <span class="nav-icon">✦</span>
+            <span class="nav-label">Final Mechanism</span>
+          </button>
+        </nav>
+      </section>
+
+      <!-- SCAN SCREEN -->
+      <section id="scan-screen" class="screen" hidden>
+        <header class="archive-header">
+          <div class="archive-header-inner">
+            <div class="archive-kicker">ARCHIVE</div>
+            <h1 class="archive-title">SCAN</h1>
+            <div class="archive-lock">⌂</div>
+          </div>
+        </header>
+
+        <main class="archive-grid-wrap">
+          <div id="scan-screen-content"></div>
+        </main>
+
+        <nav class="bottom-nav">
+          <button class="nav-btn" data-tab="archive" type="button">
+            <span class="nav-icon">⌘</span>
+            <span class="nav-label">Archive</span>
+          </button>
+
+          <button class="nav-btn nav-btn-scan active" data-tab="scan" type="button">
+            <span class="nav-icon">◎</span>
+            <span class="nav-label">SCAN</span>
+          </button>
+
+          <button class="nav-btn" data-tab="transmissions" type="button">
+            <span class="nav-icon transmissions-nav-icon">
+              ✉
+              <span class="nav-badge" id="transmissions-nav-badge-scan">0</span>
+            </span>
+            <span class="nav-label">Transmissions</span>
+          </button>
+
+          <button class="nav-btn" data-tab="final" type="button">
+            <span class="nav-icon">✦</span>
+            <span class="nav-label">Final Mechanism</span>
+          </button>
+        </nav>
+      </section>
+
+    </div>
+  </div>
+
+<audio id="terminal-hum-audio" src="./app/games/nc-natural-sciences/media/audio/terminal/computer-hum.mp3" preload="auto"></audio>
+<audio id="terminal-typing-audio" src="./app/games/nc-natural-sciences/media/audio/terminal/keyboard-clicks.mp3" preload="auto" loop></audio>
+<audio id="studio-bulb-audio" src="./app/games/nc-natural-sciences/media/audio/opening/bulb-start.wav" preload="auto"></audio>
+<audio id="sponsor-fire-audio" src="./app/games/nc-natural-sciences/media/audio/opening/sponsor-fire.mp3" preload="auto" loop></audio>
+<audio id="title-card-audio" src="./app/games/nc-natural-sciences/media/audio/opening/title-card.mp3" preload="auto"></audio>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

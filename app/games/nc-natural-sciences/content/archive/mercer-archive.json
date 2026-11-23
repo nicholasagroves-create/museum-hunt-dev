@@ -1,0 +1,88 @@
+{
+  "characterId": "mercer",
+  "label": "MERCER'S PATH",
+  "maxSlots": 9,
+  "slots": [
+    {
+      "position": 0,
+      "id": "onboarding-log",
+      "title": "Orientation Log",
+      "state": "completed",
+      "type": "log",
+      "icon": "📖",
+      "initialRevealEligible": false
+    },
+    {
+      "position": 1,
+      "id": "expedition-log-01",
+      "title": "Expedition Log 01",
+      "state": "unknown",
+      "type": "log",
+      "icon": "🕯",
+      "initialRevealEligible": true
+    },
+    {
+      "position": 2,
+      "id": "clockwork-puzzle",
+      "title": "Clockwork Puzzle",
+      "state": "unknown",
+      "type": "puzzle",
+      "icon": "⚙",
+      "initialRevealEligible": true
+    },
+    {
+      "position": 3,
+      "id": "art-heist",
+      "title": "Art Heist",
+      "state": "unknown",
+      "type": "puzzle",
+      "icon": "🖼",
+      "initialRevealEligible": true
+    },
+    {
+      "position": 4,
+      "id": "ancient-chamber",
+      "title": "Ancient Chamber",
+      "state": "unknown",
+      "type": "puzzle",
+      "icon": "𓂀",
+      "initialRevealEligible": true
+    },
+    {
+      "position": 5,
+      "id": "hidden-record",
+      "title": "Hidden Record",
+      "state": "unknown",
+      "type": "fragment",
+      "icon": "✦",
+      "initialRevealEligible": true
+    },
+    {
+      "position": 6,
+      "id": "slot-07",
+      "title": "",
+      "state": "unknown",
+      "type": "empty",
+      "icon": "",
+      "initialRevealEligible": false
+    },
+    {
+      "position": 7,
+      "id": "slot-08",
+      "title": "",
+      "state": "unknown",
+      "type": "empty",
+      "icon": "",
+      "initialRevealEligible": false
+    },
+    {
+      "position": 8,
+      "id": "slot-09",
+      "title": "",
+      "state": "unknown",
+      "type": "empty",
+      "icon": "",
+      "initialRevealEligible": false
+    }
+  ]
+}

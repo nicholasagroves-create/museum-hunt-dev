@@ -1,0 +1,7 @@
+{
+  "id": "nc-natural-sciences",
+  "title": "NC Natural Sciences",
+  "defaultSkin": "default",
+  "startScreen": "archive",
+  "archiveIndex": "app/games/nc-natural-sciences/content/archive/archive-index.json"
+}

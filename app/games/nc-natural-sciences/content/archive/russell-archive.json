@@ -1,0 +1,79 @@
+{
+  "characterId": "russell",
+  "label": "RUSSELL'S PATH",
+  "maxSlots": 9,
+  "slots": [
+    {
+      "position": 0,
+      "id": "russell-log-01",
+      "title": "Signal Drift",
+      "state": "completed",
+      "type": "log",
+      "icon": "📡"
+    },
+    {
+      "position": 1,
+      "id": "russell-log-02",
+      "title": "Survey Notes",
+      "state": "unlocked",
+      "type": "log",
+      "icon": "🧭"
+    },
+    {
+      "position": 2,
+      "id": "russell-puzzle-01",
+      "title": "Stone Sequence",
+      "state": "completed",
+      "type": "puzzle",
+      "icon": "🪨"
+    },
+    {
+      "position": 3,
+      "id": "russell-puzzle-02",
+      "title": "Glass Cipher",
+      "state": "unlocked",
+      "type": "puzzle",
+      "icon": "◇"
+    },
+    {
+      "position": 4,
+      "id": "russell-fragment-01",
+      "title": "Fault Line",
+      "state": "hint",
+      "type": "fragment",
+      "icon": "✦"
+    },
+    {
+      "position": 5,
+      "id": "russell-slot-06",
+      "title": "",
+      "state": "unknown",
+      "type": "empty",
+      "icon": ""
+    },
+    {
+      "position": 6,
+      "id": "russell-slot-07",
+      "title": "",
+      "state": "unknown",
+      "type": "empty",
+      "icon": ""
+    },
+    {
+      "position": 7,
+      "id": "russell-slot-08",
+      "title": "",
+      "state": "unknown",
+      "type": "empty",
+      "icon": ""
+    },
+    {
+      "position": 8,
+      "id": "russell-slot-09",
+      "title": "",
+      "state": "unknown",
+      "type": "empty",
+      "icon": ""
+    }
+  ]
+}

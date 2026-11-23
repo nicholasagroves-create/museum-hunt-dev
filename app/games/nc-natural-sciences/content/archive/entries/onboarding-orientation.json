@@ -1,0 +1,10 @@
+{
+  "id": "onboarding-orientation",
+  "title": "Orientation Log",
+  "speaker": "Mercer",
+  "deliveryType": "journal",
+  "audio": "media/audio/logs/orientation-log.wav",
+  "transcript": "If you're hearing this, then you've already taken the first step...",
+  "uiTemplate": "journal-page",
+  "postAction": "launch:onboarding-mechanism"
+}

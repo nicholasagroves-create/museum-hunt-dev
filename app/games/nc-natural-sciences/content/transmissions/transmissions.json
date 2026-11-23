@@ -1,0 +1,79 @@
+[
+  {
+    "id": "t-001",
+    "characterId": "mercer",
+    "state": "active",
+    "message": "I found something strange… looks like a wall covered in buttons.",
+    "hint": {
+      "locationId": "whale-room",
+      "text": "...it's under the big whale on the 3rd floor."
+    },
+    "targetPuzzleId": "stone-wall"
+  },
+  {
+    "id": "t-002",
+    "characterId": "mercer",
+    "state": "active",
+    "message": "There’s another mechanism nearby. This one feels different.",
+    "hint": {
+      "locationId": "dino-hall",
+      "text": "...near the suspended skeleton in the main hall."
+    },
+    "targetPuzzleId": "rotation-puzzle"
+  },
+  {
+    "id": "t-003",
+    "characterId": "russell",
+    "state": "active",
+    "message": "I marked one near the upper exhibits. I didn’t stay long.",
+    "hint": {
+      "locationId": "upper-exhibits",
+      "text": "...somewhere along the upper exhibits corridor."
+    },
+    "targetPuzzleId": "placeholder-russell-1"
+  },
+  {
+    "id": "t-004",
+    "characterId": "hannah",
+    "state": "active",
+    "message": "There’s a mechanism close to the central displays. Look carefully.",
+    "hint": {
+      "locationId": "central-hall",
+      "text": "...near the central displays on the main route."
+    },
+    "targetPuzzleId": "placeholder-hannah-1"
+  },
+  {
+    "id": "t-005",
+    "characterId": "megan",
+    "state": "active",
+    "message": "I saw another one tucked farther out than I expected.",
+    "hint": {
+      "locationId": "east-wing",
+      "text": "...somewhere out toward the east wing."
+    },
+      "targetPuzzleId": "east-wing"
+  },
+  {
+    "id": "t-006",
+    "characterId": "elias",
+    "state": "active",
+    "message": "There is definitely a mechanism near the quieter side galleries.",
+    "hint": {
+      "locationId": "side-galleries",
+      "text": "...in the quieter side galleries."
+    },
+    "targetPuzzleId": "placeholder-elias-1"
+  },
+  {
+    "id": "t-007",
+    "characterId": "lila",
+    "state": "active",
+    "message": "One of the mechanisms is hidden in plain sight. Don’t overthink it.",
+    "hint": {
+      "locationId": "west-gallery",
+      "text": "...somewhere in the west gallery."
+    },
+    "targetPuzzleId": "placeholder-lila-1"
+  }
+]

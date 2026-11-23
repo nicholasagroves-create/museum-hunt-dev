@@ -1,0 +1,43 @@
+{
+  "archiveId": "ncns-main-archive",
+  "version": 1,
+  "defaultSort": "sequence",
+  "entries": [
+    {
+      "id": "onboarding-orientation",
+      "file": "entries/onboarding-orientation.json",
+      "sequence": 0,
+      "title": "Orientation Log",
+      "defaultState": "visible",
+      "deliveryType": "journal",
+      "category": "core",
+      "characterSlot": "guide",
+      "unlockTrigger": "game-start",
+      "isReplayable": true
+    },
+    {
+      "id": "expedition-log-01",
+      "file": "entries/expedition-log-01.json",
+      "sequence": 1,
+      "title": "Expedition Log 01",
+      "defaultState": "sealed",
+      "deliveryType": "journal",
+      "category": "core",
+      "characterSlot": "slot-01",
+      "unlockTrigger": "runtime-sequence:beat-01",
+      "isReplayable": true
+    },
+    {
+      "id": "missing-fragment",
+      "file": "entries/missing-fragment.json",
+      "sequence": 2,
+      "title": "Missing Fragment",
+      "defaultState": "missing",
+      "deliveryType": "fragment",
+      "category": "core",
+      "characterSlot": null,
+      "unlockTrigger": "scan:future",
+      "isReplayable": false
+    }
+  ]
+}

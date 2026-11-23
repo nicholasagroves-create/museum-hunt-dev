@@ -1,0 +1,122 @@
+/* ========================================
+   OPENING — STUDIO SCREEN
+======================================== */
+
+.opening-studio-screen {
+  position: relative;
+  min-height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+  opacity: 1;
+  transition: opacity 1200ms ease;
+}
+
+.opening-studio-screen.is-fading-out {
+  opacity: 0;
+}
+
+/* ========================================
+   STUDIO BACKGROUND
+======================================== */
+
+.studio-background {
+  position: absolute;
+  inset: 0;
+  background: url("/app/games/nc-natural-sciences/media/opening/studio-room-lit.jpg") center 75% / cover no-repeat;
+  opacity: 0;
+  transition: opacity 1200ms ease;
+  z-index: 0;
+}
+
+.studio-background.is-visible {
+  opacity: 1;
+}
+
+/* ========================================
+   STUDIO DARKNESS
+======================================== */
+
+.studio-darkness {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  opacity: 1;
+  transition: opacity 160ms ease;
+  z-index: 1;
+}
+
+/* ========================================
+   STUDIO GRADIENT
+======================================== */
+
+.studio-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.52) 0%,
+    rgba(0, 0, 0, 0.22) 30%,
+    rgba(0, 0, 0, 0.04) 58%,
+    rgba(0, 0, 0, 0.0) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ========================================
+   STUDIO TEXT
+======================================== */
+
+.studio-text {
+  position: absolute;
+  left: 8%;
+  top: 26% !important;
+  transform: none !important;
+  text-align: left;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 700ms ease;
+}
+
+.studio-text.is-visible {
+  opacity: 1;
+}
+
+.studio-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(32px, 5vw, 56px);
+  letter-spacing: 0.28em;
+  color: #e6c48a;
+  text-shadow:
+    0 0 6px rgba(230, 196, 138, 0.25),
+    0 0 18px rgba(230, 196, 138, 0.15);
+}
+
+.studio-subtitle {
+  margin-top: 18px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(18px, 2.5vw, 24px);
+  letter-spacing: 0.35em;
+  color: #e6c48a;
+  opacity: 0.75;
+  text-shadow:
+    0 0 4px rgba(230, 196, 138, 0.2);
+}
+
+@media (max-width: 700px) {
+  .studio-text {
+    left: 7%;
+    top: 47%;
+  }
+
+  .studio-title {
+    font-size: clamp(22px, 5.2vw, 34px);
+    letter-spacing: 0.18em;
+  }
+
+  .studio-subtitle {
+    font-size: clamp(14px, 3vw, 18px);
+    letter-spacing: 0.24em;
+  }
+}

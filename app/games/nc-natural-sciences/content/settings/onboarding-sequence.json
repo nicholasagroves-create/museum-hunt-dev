@@ -1,0 +1,40 @@
+{
+  "mercerCharacterId": "mercer",
+  "nonMercerCharacterPool": ["russell", "hannah", "megan", "elias", "lila"],
+  "randomNonMercerCharactersToSeed": 2,
+  "seededTransmissions": {
+    "mercerCount": 2,
+    "nonMercerPerCharacter": 1,
+    "total": 4
+  },
+  "hintPacing": {
+    "preferredMin": 3,
+    "preferredMax": 4,
+    "refillRules": [
+      {
+        "whenActiveHints": 3,
+        "afterPuzzleSolves": 2,
+        "addTransmissions": 1
+      },
+      {
+        "whenActiveHints": 2,
+        "afterPuzzleSolves": 2,
+        "addTransmissions": 2
+      },
+      {
+        "whenActiveHints": 1,
+        "afterPuzzleSolves": 1,
+        "addTransmissions": 2
+      }
+    ],
+    "neverLeaveAtZeroIfEligibleRemain": true
+  },
+  "postTutorialFlow": {
+    "showMercerReveal": true,
+    "showMercerCharacterSheet": true,
+    "populateMercerSlotOne": true,
+    "showArchiveRulesPopup": true,
+    "openTransmissionsScreen": true,
+    "showTransmissionsRulesPopup": true
+  }
+}

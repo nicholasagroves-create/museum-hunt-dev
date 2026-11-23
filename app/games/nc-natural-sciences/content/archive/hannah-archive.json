@@ -1,0 +1,16 @@
+{
+  "characterId": "hannah",
+  "label": "HANNAH'S PATH",
+  "maxSlots": 9,
+  "slots": [
+    { "position": 0, "id": "hannah-log-01", "title": "Pattern Drift", "state": "completed", "type": "log", "icon": "∞" },
+    { "position": 1, "id": "hannah-log-02", "title": "Model Break", "state": "unlocked", "type": "log", "icon": "◈" },
+    { "position": 2, "id": "hannah-puzzle-01", "title": "Sequence Bloom", "state": "completed", "type": "puzzle", "icon": "✺" },
+    { "position": 3, "id": "hannah-puzzle-02", "title": "Probability Mesh", "state": "unlocked", "type": "puzzle", "icon": "⌬" },
+    { "position": 4, "id": "hannah-fragment-01", "title": "Recursive Fault", "state": "hint", "type": "fragment", "icon": "✦" },
+    { "position": 5, "id": "hannah-slot-06", "title": "", "state": "unknown", "type": "empty", "icon": "" },
+    { "position": 6, "id": "hannah-slot-07", "title": "", "state": "unknown", "type": "empty", "icon": "" },
+    { "position": 7, "id": "hannah-slot-08", "title": "", "state": "unknown", "type": "empty", "icon": "" },
+    { "position": 8, "id": "hannah-slot-09", "title": "", "state": "unknown", "type": "empty", "icon": "" }
+  ]
+}

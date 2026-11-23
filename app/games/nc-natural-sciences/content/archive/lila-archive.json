@@ -1,0 +1,16 @@
+{
+  "characterId": "lila",
+  "label": "LILA'S PATH",
+  "maxSlots": 9,
+  "slots": [
+    { "position": 0, "id": "lila-log-01", "title": "Meaning Layer", "state": "completed", "type": "log", "icon": "◬" },
+    { "position": 1, "id": "lila-log-02", "title": "Symbol Drift", "state": "unlocked", "type": "log", "icon": "⌘" },
+    { "position": 2, "id": "lila-puzzle-01", "title": "Glyph Mesh", "state": "completed", "type": "puzzle", "icon": "◭" },
+    { "position": 3, "id": "lila-puzzle-02", "title": "Language Bloom", "state": "unlocked", "type": "puzzle", "icon": "✧" },
+    { "position": 4, "id": "lila-fragment-01", "title": "Interpretive Break", "state": "hint", "type": "fragment", "icon": "✦" },
+    { "position": 5, "id": "lila-slot-06", "title": "", "state": "unknown", "type": "empty", "icon": "" },
+    { "position": 6, "id": "lila-slot-07", "title": "", "state": "unknown", "type": "empty", "icon": "" },
+    { "position": 7, "id": "lila-slot-08", "title": "", "state": "unknown", "type": "empty", "icon": "" },
+    { "position": 8, "id": "lila-slot-09", "title": "", "state": "unknown", "type": "empty", "icon": "" }
+  ]
+}

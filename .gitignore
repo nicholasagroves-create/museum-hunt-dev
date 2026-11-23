@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Local environment variables and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*service-account*.json
+
+# Temporary files
+*.log
+.DS_Store
+Thumbs.db
+
+# Build outputs
+dist/
+coverage/
+
+# Editor settings
+.vscode/
