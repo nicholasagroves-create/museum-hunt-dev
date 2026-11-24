@@ -98,6 +98,6 @@ export function renderBadgeTest(root) {
     const action=e.target.closest("button")?.dataset.action;
     if(action==="flip"){side=side==="front"?"back":"front";img.src=badgePreview(account,side);img.alt="Expedition badge "+side;}
     if(action==="save"){const status=wrap.querySelector('[role="status"]');try{status.textContent=await saveBadge(account,e.target);}catch{status.textContent="Download failed. Please take a screenshot instead.";}}
-    if(action==="archive"){location.href=location.pathname;}
+    if(action==="archive"){location.href="./";}
   });
 }
