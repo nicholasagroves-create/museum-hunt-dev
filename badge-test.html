@@ -1,1 +1,13 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101b16"><title>Expedition Badge Test</title><link rel="stylesheet" href="./app/engine/core/dev-activation.css"><style>body{margin:0;background:#080d0b}.activation{position:relative;min-height:100dvh;box-sizing:border-box}</style></head><body><div id="badge-test-root"></div><script type="module">import {renderBadgeTest} from "./app/engine/core/dev-activation.js";renderBadgeTest(document.getElementById("badge-test-root"));</script></body></html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101b16"><title>Expedition Badge Test</title><link rel="stylesheet" href="./app/engine/core/dev-activation.css"><style>body{margin:0;background:#080d0b;color:#e5dbbd;font-family:Georgia,serif}.activation{position:relative;min-height:100dvh;box-sizing:border-box}</style></head>
+<body><div id="badge-test-root"><main style="padding:48px 24px;text-align:center"><h1>Loading Expedition Badge…</h1><p>If this message remains, the testing page could not load the badge.</p><p><a style="color:#d5b976" href="./">Return to Archive</a></p></main></div>
+<script type="module">
+try {
+ const {renderBadgeTest}=await import("./app/engine/core/dev-activation.js?v=badge2");
+ renderBadgeTest(document.getElementById("badge-test-root"));
+} catch(error) {
+ document.getElementById("badge-test-root").innerHTML='<main style="padding:48px 24px;text-align:center"><h1>Badge could not load</h1><p id="badge-error"></p><p><a style="color:#d5b976" href="./">Return to Archive</a></p></main>';
+ document.getElementById("badge-error").textContent=error?.message||"Unknown loading error";
+ console.error("Badge preview failed",error);
+}
+</script></body></html>
