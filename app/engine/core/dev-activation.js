@@ -59,8 +59,8 @@ export function renderDevActivation(root, onActivated) {
         <button type="button" class="activation__badge-flip" data-action="flip" aria-label="Flip expedition badge">
           <img class="activation__badge-image" alt="Front of expedition badge" />
         </button>
-        <p class="activation__note">TAP BADGE TO FLIP · SAVE BOTH SIDES TO YOUR PHONE</p>
-        <button data-action="save">SAVE MY EXPEDITION BADGE</button>
+        <p class="activation__note">TAP BADGE TO FLIP</p>
+        <button data-action="save">SAVE BADGE</button><p class="activation__note">Saves both sides to Downloads. Prefer your photo gallery? Take a screenshot using your phone’s screenshot buttons.</p>
         <p class="activation__error" role="status"></p>
         <button data-action="begin">I'VE SAVED MY BADGE — BEGIN</button>
         <p class="activation__note">This test version remembers your account on this device. Cross-device recovery requires the future account server.</p>`);
