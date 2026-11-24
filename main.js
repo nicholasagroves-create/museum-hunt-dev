@@ -1062,6 +1062,8 @@ function goToStudio() {
 
   const savedExpedition = currentExpedition();
   if (new URLSearchParams(location.search).get("test") === "badge") {
+    if (archiveScreen) { archiveScreen.hidden = true; archiveScreen.classList.remove("active", "is-visible"); }
+    if (openingFlowScreen) { openingFlowScreen.hidden = false; openingFlowScreen.classList.add("active", "is-visible"); }
     renderBadgeTest(document.getElementById("opening-flow-root"));
   } else if (savedExpedition?.tutorialComplete) {
     if (openingFlowScreen) {
