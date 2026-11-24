@@ -1,3 +1,4 @@
+import { gameAsset } from "../../game-config.js";
 export function renderOpeningStartScreen(onBegin) {
   const root = document.getElementById("opening-flow-root");
 
@@ -8,7 +9,7 @@ export function renderOpeningStartScreen(onBegin) {
       <div class="opening-start-content">
         <div class="opening-start-seal-wrap">
           <img
-            src="./app/games/nc-natural-sciences/media/opening/ascii-seal.png"
+            src="${gameAsset("media/opening/ascii-seal.png")}"
             alt="Archive Seal"
             class="opening-start-seal"
           />
