@@ -1,3 +1,4 @@
+import { createCharacters, characterSheetData, initialCharacterId, placeholderRevealCharacterId } from "./app/games/nc-natural-sciences/content/character-config.js";
 import { gameConfig, gameAsset } from "./app/game-config.js";
 import { initializeArchiveBadge } from "./app/engine/core/archive-badge.js";
 import { currentExpedition, renderDevActivation, renderBadgeTest, markTutorialComplete } from "./app/engine/core/dev-activation.js";
@@ -16,7 +17,7 @@ import { createOpeningSponsorScreen } from "./app/engine/core/opening-sponsor-sc
 import { createOpeningTitleScreen } from "./app/engine/core/opening-title-screen.js";
 import { createOpeningBriefingScreen } from "./app/engine/core/opening-briefing-screen.js";
 
-let activeCharacterId = "mercer";
+let activeCharacterId = initialCharacterId;
 let onboardingRevealPlan = null;
 let transmissions = [];
 let activeHintTransmissionId = null;
@@ -35,70 +36,12 @@ async function registerServiceWorker() {
   }
 }
 
-const characters = [
-  {
-    id: "mercer",
-    name: "Mercer",
-    active: true,
-    locked: false,
-    portrait: gameAsset("content/characters/portraits/mercer.png")
-  },
-  {
-    id: "russell",
-    name: "Russell",
-    active: false,
-    locked: true,
-    portrait: gameAsset("content/characters/portraits/russell.png")
-  },
-  {
-    id: "hannah",
-    name: "Hannah",
-    active: false,
-    locked: true,
-    portrait: gameAsset("content/characters/portraits/hannah.png")
-  },
-  {
-    id: "megan",
-    name: "Megan",
-    active: false,
-    locked: true,
-    portrait: gameAsset("content/characters/portraits/megan.png")
-  },
-  {
-    id: "elias",
-    name: "Elias",
-    active: false,
-    locked: true,
-    portrait: gameAsset("content/characters/portraits/elias.png")
-  },
-  {
-    id: "lila",
-    name: "Lila",
-    active: false,
-    locked: true,
-    portrait: gameAsset("content/characters/portraits/lila.png")
-  }
-];
+const characters = createCharacters();
 
 /* ========================================
    CHARACTER SHEET DATA
 ======================================== */
-const characterSheetData = {
-  mercer: {
-    name: "Dr. Jonathan Mercer",
-    role: "Expedition Lead / Systems Archaeologist",
-    portrait: gameAsset("content/characters/portraits/mercer.png"),
-    description: `
-Mercer led the original expedition into the museum complex.
 
-His work focused on identifying and activating the underlying system connecting the site’s mechanisms. Early logs suggest he was the first to recognize that the structure was not a collection of exhibits, but a unified system.
-
-Most recovered records originate from Mercer.
-
-His final transmissions are incomplete.
-    `
-  }
-};
 
 function setActiveCharacter(characterId) {
   activeCharacterId = characterId;
@@ -160,8 +103,8 @@ function renderCharacterStrip() {
       if (character.locked) return;
 
       if (character.active) {
-        if (character.id === "mercer") {
-          showCharacterSheetModal(characterSheetData.mercer);
+        if (character.id === initialCharacterId) {
+          showCharacterSheetModal(characterSheetData[initialCharacterId]);
         }
         return;
       }
@@ -406,18 +349,7 @@ runtimePuzzleState[match.characterId] = {
 await flashCharacterReveal(match.characterId);
 
 showCharacterSheetModal({
-  name: "Megan Vale",
-  role: "Archivist / Records Specialist",
-  portrait: gameAsset("content/characters/portraits/megan.png"),
-  description: `
-Megan was responsible for documenting and preserving the expedition’s findings.
-
-Her logs indicate a deep awareness of inconsistencies in the records—gaps, omissions, patterns that didn’t align.
-
-She began to suspect that not everything was being recorded.
-
-Some things may have been deliberately left out.
-  `,
+  ...characterSheetData[placeholderRevealCharacterId],
   onClose: async () => {
     setActiveCharacter(match.characterId);
     renderCharacterStrip();
@@ -641,7 +573,7 @@ transmissions = [...mercerSeeded, ...nonMercerSeeded].map((t) => ({
 
   window.__museumHuntTransmissions = transmissions;
 
-setActiveCharacter("mercer");
+setActiveCharacter(initialCharacterId);
 renderCharacterStrip();
 mountScanScreen();
 wireBottomNav();
@@ -787,19 +719,19 @@ function goToTutorial() {
       await new Promise((resolve) => setTimeout(resolve, 900));
 
       // 6. Flash locked Mercer portrait
-      await flashCharacterReveal("mercer");
+      await flashCharacterReveal(initialCharacterId);
 
       // 7. Mercer reveal popup
       showCharacterSheetModal({
-        ...characterSheetData.mercer,
+        ...characterSheetData[initialCharacterId],
         onClose: async () => {
-          const mercer = characters.find((character) => character.id === "mercer");
+          const mercer = characters.find((character) => character.id === initialCharacterId);
 
           if (mercer) {
             mercer.locked = false;
           }
 
-          setActiveCharacter("mercer");
+          setActiveCharacter(initialCharacterId);
           renderCharacterStrip();
 
           if (archiveScreen) {
@@ -912,7 +844,7 @@ Some transmissions may contain guidance on where to find puzzles in the environm
                     scanScreen.classList.remove("active");
                   }
 
-                  setActiveCharacter("mercer");
+                  setActiveCharacter(initialCharacterId);
                   renderCharacterStrip();
                   await renderActiveArchive();
                 }
@@ -1088,7 +1020,7 @@ function goToStudio() {
       archiveScreen.classList.add("active", "is-visible");
       archiveScreen.classList.remove("archive-pre-reveal");
     }
-    const mercer = characters.find((character) => character.id === "mercer");
+    const mercer = characters.find((character) => character.id === initialCharacterId);
     if (mercer) mercer.locked = false;
     renderCharacterStrip();
     await renderActiveArchive();
@@ -1240,19 +1172,19 @@ if (archiveScreen) {
 await new Promise((resolve) => setTimeout(resolve, 900));
 
 // 6. Flash locked Mercer portrait
-await flashCharacterReveal("mercer");
+await flashCharacterReveal(initialCharacterId);
 
 // 7. Mercer reveal popup
 showCharacterSheetModal({
-      ...characterSheetData.mercer,
+      ...characterSheetData[initialCharacterId],
 onClose: async () => {
-  const mercer = characters.find((character) => character.id === "mercer");
+  const mercer = characters.find((character) => character.id === initialCharacterId);
 
   if (mercer) {
     mercer.locked = false;
   }
 
-  setActiveCharacter("mercer");
+  setActiveCharacter(initialCharacterId);
   renderCharacterStrip();
 
   if (archiveScreen) {
@@ -1365,7 +1297,7 @@ onClose: async () => {
     scanScreen.classList.remove("active");
   }
 
-  setActiveCharacter("mercer");
+  setActiveCharacter(initialCharacterId);
   renderCharacterStrip();
   await renderActiveArchive();
 }
