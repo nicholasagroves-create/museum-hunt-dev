@@ -584,6 +584,16 @@ function triggerOpeningCrtBurst(onComplete) {
 ======================================== */
 
 async function boot() {
+  for (const [id, path] of Object.entries({
+  "terminal-hum-audio": "media/audio/terminal/computer-hum.mp3",
+  "terminal-typing-audio": "media/audio/terminal/keyboard-clicks.mp3",
+  "studio-bulb-audio": "media/audio/opening/bulb-start.wav",
+  "sponsor-fire-audio": "media/audio/opening/sponsor-fire.mp3",
+  "title-card-audio": "media/audio/opening/title-card.mp3"
+})) {
+    const audio = document.getElementById(id);
+    if (audio) audio.src = gameAsset(path);
+  }
   initializeArchiveBadge();
   initializeGlobalAudioController();
   mountGlobalMuteButton();
