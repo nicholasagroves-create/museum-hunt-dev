@@ -1,6 +1,6 @@
 import { badgePreview, saveBadge } from "./expedition-badge.js";
 // Development-only activation. No backend verification or cross-device recovery yet.
-const KEY = "museum-hunt-dev-expedition-v2";
+const KEY = "museum-hunt-sandbox-expedition-v1";
 const CODE = "TEST-123"; // Temporary shared testing code; future codes are administrator-defined.
 const ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 export function formatGameId(value) { const raw = value.toUpperCase().replace(/[^A-Z0-9]/g,"").slice(0,7); return raw.length > 4 ? raw.slice(0,4)+"-"+raw.slice(4) : raw; }
