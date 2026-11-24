@@ -67,13 +67,8 @@ export async function saveBadge(account,button){
   const blob=await new Promise(resolve=>canvas.toBlob(resolve,"image/png"));
   if(!blob)throw new Error("Could not create badge image");
   const file=new File([blob],"mercer-expedition-badge.png",{type:"image/png"});
-  // The share sheet lets the player select Photos, Files, etc.
-  if(navigator.canShare?.({files:[file]})){
-    try {await navigator.share({files:[file],title:"My Expedition Badge"});return "Share menu opened";}
-    catch(e){if(e.name==="AbortError")return "Save cancelled";}
-  }
   const url=URL.createObjectURL(blob),link=document.createElement("a");
   link.href=url;link.download=file.name;document.body.appendChild(link);link.click();link.remove();
   setTimeout(()=>URL.revokeObjectURL(url),60000);
-  return "Badge download requested — check Downloads";
+  return "Badge saved to Downloads (or check your browser downloads).";
 }
