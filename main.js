@@ -1,4 +1,4 @@
-import { currentExpedition, renderDevActivation, markTutorialComplete } from "./app/engine/core/dev-activation.js";
+import { currentExpedition, renderDevActivation, renderBadgeTest, markTutorialComplete } from "./app/engine/core/dev-activation.js";
 import { loadCharacterArchive } from "./app/engine/archive/archive-data-loader.js";
 import { initializeGlobalAudioController } from "./app/engine/core/global-audio-controller.js";
 import { mountGlobalMuteButton } from "./app/engine/ui/global-mute-button.js";
@@ -1061,7 +1061,9 @@ function goToStudio() {
   }
 
   const savedExpedition = currentExpedition();
-  if (savedExpedition?.tutorialComplete) {
+  if (new URLSearchParams(location.search).get("test") === "badge") {
+    renderBadgeTest(document.getElementById("opening-flow-root"));
+  } else if (savedExpedition?.tutorialComplete) {
     if (openingFlowScreen) {
       openingFlowScreen.hidden = true;
       openingFlowScreen.classList.remove("active");
