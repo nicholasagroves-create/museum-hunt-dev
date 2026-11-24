@@ -1,3 +1,4 @@
+import { gameConfig, gameAsset } from "./app/game-config.js";
 import { initializeArchiveBadge } from "./app/engine/core/archive-badge.js";
 import { currentExpedition, renderDevActivation, renderBadgeTest, markTutorialComplete } from "./app/engine/core/dev-activation.js";
 import { loadCharacterArchive } from "./app/engine/archive/archive-data-loader.js";
@@ -40,42 +41,42 @@ const characters = [
     name: "Mercer",
     active: true,
     locked: false,
-    portrait: "./app/games/nc-natural-sciences/content/characters/portraits/mercer.png"
+    portrait: gameAsset("content/characters/portraits/mercer.png")
   },
   {
     id: "russell",
     name: "Russell",
     active: false,
     locked: true,
-    portrait: "./app/games/nc-natural-sciences/content/characters/portraits/russell.png"
+    portrait: gameAsset("content/characters/portraits/russell.png")
   },
   {
     id: "hannah",
     name: "Hannah",
     active: false,
     locked: true,
-    portrait: "./app/games/nc-natural-sciences/content/characters/portraits/hannah.png"
+    portrait: gameAsset("content/characters/portraits/hannah.png")
   },
   {
     id: "megan",
     name: "Megan",
     active: false,
     locked: true,
-    portrait: "./app/games/nc-natural-sciences/content/characters/portraits/megan.png"
+    portrait: gameAsset("content/characters/portraits/megan.png")
   },
   {
     id: "elias",
     name: "Elias",
     active: false,
     locked: true,
-    portrait: "./app/games/nc-natural-sciences/content/characters/portraits/elias.png"
+    portrait: gameAsset("content/characters/portraits/elias.png")
   },
   {
     id: "lila",
     name: "Lila",
     active: false,
     locked: true,
-    portrait: "./app/games/nc-natural-sciences/content/characters/portraits/lila.png"
+    portrait: gameAsset("content/characters/portraits/lila.png")
   }
 ];
 
@@ -86,7 +87,7 @@ const characterSheetData = {
   mercer: {
     name: "Dr. Jonathan Mercer",
     role: "Expedition Lead / Systems Archaeologist",
-    portrait: "./app/games/nc-natural-sciences/content/characters/portraits/mercer.png",
+    portrait: gameAsset("content/characters/portraits/mercer.png"),
     description: `
 Mercer led the original expedition into the museum complex.
 
@@ -145,7 +146,7 @@ function renderCharacterStrip() {
     card.type = "button";
 
     const portrait = character.locked
-      ? `<img src="./app/games/nc-natural-sciences/content/characters/portraits/locked.png" alt="Locked" />`
+      ? `<img src="${gameAsset("content/characters/portraits/locked.png")}" alt="Locked" />`
       : `<img src="${character.portrait}" alt="${character.name}" />`;
 
     const displayName = character.locked ? "Locked" : character.name;
@@ -407,7 +408,7 @@ await flashCharacterReveal(match.characterId);
 showCharacterSheetModal({
   name: "Megan Vale",
   role: "Archivist / Records Specialist",
-  portrait: "./app/games/nc-natural-sciences/content/characters/portraits/megan.png",
+  portrait: gameAsset("content/characters/portraits/megan.png"),
   description: `
 Megan was responsible for documenting and preserving the expedition’s findings.
 
@@ -609,8 +610,8 @@ characters.forEach((character) => {
   const { loadArchiveIndex } = await import("./app/engine/archive/archive-loader.js");
 
   const archiveData = await loadArchiveIndex(
-    "./app/games/nc-natural-sciences/content/archive/archive-index.json",
-    "./app/games/nc-natural-sciences"
+    gameAsset("content/archive/archive-index.json"),
+    gameConfig.basePath
   );
 
 const mercerSeeded = archiveData.transmissions
