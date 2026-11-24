@@ -1,3 +1,4 @@
+import { initializeArchiveBadge } from "./app/engine/core/archive-badge.js";
 import { currentExpedition, renderDevActivation, renderBadgeTest, markTutorialComplete } from "./app/engine/core/dev-activation.js";
 import { loadCharacterArchive } from "./app/engine/archive/archive-data-loader.js";
 import { initializeGlobalAudioController } from "./app/engine/core/global-audio-controller.js";
@@ -582,6 +583,7 @@ function triggerOpeningCrtBurst(onComplete) {
 ======================================== */
 
 async function boot() {
+  initializeArchiveBadge();
   initializeGlobalAudioController();
   mountGlobalMuteButton();
   registerServiceWorker();
