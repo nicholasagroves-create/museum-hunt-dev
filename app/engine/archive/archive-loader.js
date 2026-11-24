@@ -1,6 +1,7 @@
+import { gameAsset } from "../../game-config.js";
 import { loadTransmissions } from '../narrative/transmissions-loader.js';
 
-const GAME_ROOT = "./app/games/nc-natural-sciences/content/archive/";
+const GAME_ROOT = gameAsset("content/archive/");
 
 export async function loadArchiveIndex(indexPath, gamePath) {
   const response = await fetch(indexPath);

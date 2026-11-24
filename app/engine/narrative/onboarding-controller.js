@@ -1,6 +1,7 @@
+import { gameAsset } from "../../game-config.js";
 export async function loadOnboardingConfig() {
   const response = await fetch(
-    "./app/games/nc-natural-sciences/content/settings/onboarding-sequence.json"
+    gameAsset("content/settings/onboarding-sequence.json")
   );
 
   if (!response.ok) {

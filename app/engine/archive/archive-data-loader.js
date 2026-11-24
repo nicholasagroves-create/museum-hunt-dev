@@ -1,11 +1,12 @@
+import { gameAsset } from "../../game-config.js";
 export async function loadCharacterArchive(characterId) {
   const fileMap = {
-    mercer: "./app/games/nc-natural-sciences/content/archive/mercer-archive.json",
-    russell: "./app/games/nc-natural-sciences/content/archive/russell-archive.json",
-    hannah: "./app/games/nc-natural-sciences/content/archive/hannah-archive.json",
-    megan: "./app/games/nc-natural-sciences/content/archive/megan-archive.json",
-    elias: "./app/games/nc-natural-sciences/content/archive/elias-archive.json",
-    lila: "./app/games/nc-natural-sciences/content/archive/lila-archive.json"
+    mercer: gameAsset("content/archive/mercer-archive.json"),
+    russell: gameAsset("content/archive/russell-archive.json"),
+    hannah: gameAsset("content/archive/hannah-archive.json"),
+    megan: gameAsset("content/archive/megan-archive.json"),
+    elias: gameAsset("content/archive/elias-archive.json"),
+    lila: gameAsset("content/archive/lila-archive.json")
   };
 
   const path = fileMap[characterId];
