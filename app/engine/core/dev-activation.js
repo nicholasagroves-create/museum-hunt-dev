@@ -84,3 +84,20 @@ export function renderDevActivation(root, onActivated) {
     } else if (action === "begin") onActivated(currentExpedition(), false);
   });
 }
+
+export function renderBadgeTest(root) {
+  const account=currentExpedition();
+  if(!account){renderDevActivation(root,()=>location.reload());return;}
+  const wrap=document.createElement("div");
+  wrap.className="activation";
+  wrap.innerHTML=`<div class="activation__panel"><div class="activation__eyebrow">DEVELOPMENT · BADGE PREVIEW</div><h1>YOUR EXPEDITION BADGE</h1><p class="activation__intro">Tap to flip. This is your existing account.</p><button type="button" class="activation__badge-flip" data-action="flip"><img class="activation__badge-image" alt="Expedition badge front"></button><p class="activation__note">Tap badge to flip · Screenshot using Power + Volume Down</p><button data-action="save">SAVE BADGE</button><p class="activation__note">Saves both sides to Downloads. Or take a screenshot to keep the visible side in Gallery.</p><p class="activation__error" role="status"></p><button data-action="archive">RETURN TO ARCHIVE</button></div>`;
+  root.replaceChildren(wrap);
+  let side="front";
+  const img=wrap.querySelector("img");img.src=badgePreview(account,side);
+  wrap.addEventListener("click",async e=>{
+    const action=e.target.closest("button")?.dataset.action;
+    if(action==="flip"){side=side==="front"?"back":"front";img.src=badgePreview(account,side);img.alt="Expedition badge "+side;}
+    if(action==="save"){const status=wrap.querySelector('[role="status"]');try{status.textContent=await saveBadge(account,e.target);}catch{status.textContent="Download failed. Please take a screenshot instead.";}}
+    if(action==="archive"){location.href=location.pathname;}
+  });
+}
