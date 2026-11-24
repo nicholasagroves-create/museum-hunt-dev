@@ -1,3 +1,4 @@
+import { gameAsset } from "../../game-config.js";
 export function createOpeningBriefingScreen({ onComplete } = {}) {
   let rootEl = null;
   let isDestroyed = false;
@@ -37,7 +38,7 @@ function mount(container) {
   Object.assign(bg.style, {
     position: "absolute",
     inset: "0",
-    backgroundImage: "url('./app/games/nc-natural-sciences/media/opening/briefing-memo.png')",
+    backgroundImage: `url('${gameAsset("media/opening/briefing-memo.png")}')`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat"
